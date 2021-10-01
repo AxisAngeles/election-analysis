@@ -9,7 +9,7 @@ video = input("What show or movie are you looking for? ")
 csvpath = os.path.join("..", "Resources", "netflix_ratings.csv")
 
 # Specify the file to write to the movie data.
-
+txtpath = os.path.join("..","output","output.txt")
 
 # Set a variable to false to check if we found the video
 found = False

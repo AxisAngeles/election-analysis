@@ -105,7 +105,7 @@ for candidate in candidate_votes:
         winning_count = votes
         winning_percentage = vote_percentage
         # 21) Set the winning_candidate equal to the candidate's name.
-        winning_candidate = candidate_name
+        winning_candidate = candidate
     
     #  To do: print out the winning candidate, vote count and percentage to terminal.
     print(f"\n"f"{candidate}: {vote_percentage:.1f}% ({votes:,})\n")
