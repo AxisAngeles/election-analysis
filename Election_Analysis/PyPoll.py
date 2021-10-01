@@ -82,38 +82,64 @@ with open(file_to_load) as election_data:
         
         candidate_votes[candidate_name] += 1
 
-#print(candidate_votes)
+# 22) Open text file with "w" to write on it.
+with open(file_to_save, "w") as txt_file:
 
-#-------------------------------------------------------------------------------
-### GETTING EACH CANDIDATE VOTE PERCENTAGE
+    # 23) Print the final vote count to the terminal.
+    election_results = (
+        f'\nElection Results\n'
+        f'{"-"*25}\n'
+        f'Total votes: {total_votes:,}\n'
+        f'{"-"*25}\n'
+    )
+    print(election_results, end="") #The "end" parameter is added to ensure that nothing will be printed on the last line
+    # Save the final vote count to the text file.
+    txt_file.write(election_results)
 
-# 17) Get each candidates votes and percentage from the dictionary
-for candidate in candidate_votes:
-    votes = candidate_votes[candidate]
-    vote_percentage = float(votes) / float(total_votes) * 100
-    # ALEXIS: print(f'{candidate} has {votes:,} votes; equal to {vote_percentage:3.3}%.')
 
 
-#-------------------------------------------------------------------------------
-### DETERMINE WHO WON
+    #-------------------------------------------------------------------------------
+    ### GETTING EACH CANDIDATE VOTE PERCENTAGE
 
-    # 18) Declare winning count and winning candidate variables.
+    # 17) Get each candidates votes and percentage from the dictionary
+    for candidate in candidate_votes:
+        votes = candidate_votes[candidate]
+        vote_percentage = float(votes) / float(total_votes) * 100
+        # ALEXIS: print(f'{candidate} has {votes:,} votes; equal to {vote_percentage:3.3}%.')
+
+
+    #-------------------------------------------------------------------------------
+    ### DETERMINE WHO WON
+
+        # 18) Declare winning count and winning candidate variables.
+        
+        # 19) Determine if the votes are greater than the winning count.
+        if (votes > winning_count) and (vote_percentage > winning_percentage):
+            # 20) If true then set winning_count = votes and winning_percent = vote_percentage.
+            winning_count = votes
+            winning_percentage = vote_percentage
+            # 21) Set the winning_candidate equal to the candidate's name.
+            winning_candidate = candidate
+        
+        #  To do: print out the winning candidate, vote count and percentage to terminal.
+        candidate_results = (f"{candidate}: {vote_percentage:.1f}% ({votes:,})\n")
+        # 24) Print each candidate, their voter count, and percentage to the terminal.
+        print(candidate_results)
+        #  25) Save the candidate results to our text file.
+        txt_file.write(candidate_results)
+
+    winning_candidate_summary = (
+        f"-------------------------\n"
+        f"Winner: {winning_candidate}\n"
+        f"Winning Vote Count: {winning_count:,}\n"
+        f"Winning Percentage: {winning_percentage:.1f}%\n"
+        f"-------------------------\n")
     
-    # 19) Determine if the votes are greater than the winning count.
-    if (votes > winning_count) and (vote_percentage > winning_percentage):
-        # 20) If true then set winning_count = votes and winning_percent = vote_percentage.
-        winning_count = votes
-        winning_percentage = vote_percentage
-        # 21) Set the winning_candidate equal to the candidate's name.
-        winning_candidate = candidate
-    
-    #  To do: print out the winning candidate, vote count and percentage to terminal.
-    print(f"\n"f"{candidate}: {vote_percentage:.1f}% ({votes:,})\n")
+    # 26) # Save the winning candidate's name to the text file.
+    print(winning_candidate_summary)
+    txt_file.write(winning_candidate_summary)
 
-winning_candidate_summary = (
-    f"-------------------------\n"
-    f"Winner: {winning_candidate}\n"
-    f"Winning Vote Count: {winning_count:,}\n"
-    f"Winning Percentage: {winning_percentage:.1f}%\n"
-    f"-------------------------\n")
-print(winning_candidate_summary)
+    #-------------------------------------------------------------------------------
+    ### WRITE TO A TEXT FILE
+    # 22) Open text file with "w" to write on it.
+
