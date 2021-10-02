@@ -26,8 +26,8 @@ The final election results can be summarized as follows:
 
 * Winner of the election: **Diana DeGette**
 
-**Election Onepager**
-![election_results](https://github.com/AxisAngeles/election_analysis/tree/main/Challenge/Resources/Election_results.PNG)
+**Election Onepager**  
+![election_results](https://github.com/AxisAngeles/election-analysis/blob/main/Challenge/Resources/Election_results.PNG)
 
 
 ## **Election Audit Summary**
